@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>NUM Delivery — Нэвтрэх</title>
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --accent:#0b5ed7;
+      --muted:#6b7280;
+      --danger:#dc3545;
+      --radius:12px;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),#eef4ff 60%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    header.app-header{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo {
+      width:48px;
+      height:48px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:10px;
+      background:linear-gradient(135deg,#0b5ed7,#2ea6ff);
+      box-shadow: 0 6px 18px rgba(11,94,215,0.18);
+      color:white;
+      font-weight:700;
+      font-size:20px;
+    }
+    .brand {
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
+    .brand .title{font-size:18px;font-weight:700;color:#0f1724;}
+    .brand .subtitle{font-size:12px;color:var(--muted);}
+
+    .card{
+      width:100%;
+      max-width:420px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.08);
+      padding:28px;
+    }
+
+    .card h1{margin:0 0 12px 0;font-size:20px;}
+    p.lead{margin:0 0 18px 0;color:var(--muted);font-size:14px;}
+
+    form .field{margin-bottom:14px;display:flex;flex-direction:column;gap:6px;}
+    label{font-size:13px;color:#111827;}
+    input[type="text"], input[type="password"]{
+      padding:12px 12px;
+      border-radius:10px;
+      border:1px solid #e6e9ef;
+      font-size:14px;
+      outline:none;
+    }
+    input:focus{box-shadow:0 0 0 4px rgba(11,94,215,0.08); border-color:var(--accent);}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+    .remember{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);}
+
+    button[type="submit"]{
+      width:100%;
+      padding:12px;
+      border-radius:10px;
+      border:0;
+      background:var(--accent);
+      color:white;
+      font-weight:600;
+      font-size:15px;
+      cursor:pointer;
+    }
+    button[disabled]{opacity:0.6;cursor:not-allowed;}
+
+    .helper{margin-top:12px;font-size:13px;color:var(--muted);text-align:center;}
+    .error{color:var(--danger);font-size:13px;margin-top:8px;}
+    .success{color:green;font-size:13px;margin-top:8px;}
+
+    @media (max-width:480px){
+      body{padding:16px;}
+      .card{padding:20px;}
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="login-heading">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+      <header class="app-header" aria-hidden="false">
+        <!-- SVG logo placeholder -->
+        <div class="logo" aria-hidden="true">
+          <!-- Simple box-logo; солиож болно -->
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="4" fill="white" />
+            <path d="M6 12h12M6 16h12M6 8h6" stroke="#0b5ed7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="brand" style="margin-left:8px;">
+          <div class="title">NUM Delivery</div>
+          <div class="subtitle">SISI ID-аар нэвтрэх</div>
+        </div>
+      </header>
+      <!-- Optional small helper (can remove) -->
+      <div style="font-size:12px;color:var(--muted);">Албан ёсны</div>
+    </div>
+
+    <h1 id="login-heading">NUM Delivery-д нэвтрэх</h1>
+    <p class="lead">Та SISI ID болон нууц үгээр нэвтэрнэ үү. Хэрэв танд SISI ID байхгүй бол администраторт хандах.</p>
+
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="sisiId">SISI ID</label>
+        <input id="sisiId" name="sisiId" type="text" inputmode="text" autocomplete="username" placeholder="S1234567" required aria-required="true">
+      </div>
+
+      <div class="field">
+        <label for="password">Нууц үг</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required aria-required="true" minlength="6">
+      </div>
+
+      <div class="row" style="margin-bottom:8px;">
+        <label class="remember">
+          <input type="checkbox" id="remember" name="remember">
+          <span>Сануулах</span>
+        </label>
+        <a href="#" style="font-size:13px;color:var(--accent);text-decoration:none;">Нууц үг мартсан?</a>
+      </div>
+
+      <button type="submit" id="submitBtn">Нэвтрэх</button>
+
+      <div id="message" role="status" aria-live="polite"></div>
+    </form>
+
+    <p class="helper">Эсвэл <a href="#" style="color:var(--accent);text-decoration:none;">тусламж</a> авна уу.</p>
+  </main>
+
+  <script>
+    // Жишээ: клиент талын энгийн валидаци ба сервер рүү POST хийх загвар.
+    // Анхаар: production-д HTTPS ашиглах, CSRF & rate-limit & proper error handling хэрэгтэй.
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const msgEl = document.getElementById('message');
+      msgEl.textContent = '';
+      msgEl.className = '';
+
+      const sisiId = document.getElementById('sisiId').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!sisiId) {
+        msgEl.textContent = 'SISI ID оруулна уу.';
+        msgEl.className = 'error';
+        document.getElementById('sisiId').focus();
+        return;
+      }
+      if (!password || password.length < 6) {
+        msgEl.textContent = 'Нууц үг 6-аас их тэмдэгттэй байх ёстой.';
+        msgEl.className = 'error';
+        document.getElementById('password').focus();
+        return;
+      }
+
+      // Disable submit while working
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Түр хүлээнэ үү...';
+
+      try {
+        // Таний серверийн endpoint-ыг доорх "/login" -оор солино.
+        // Жишээ: реаль сервер байгаа бол дараах fetch-ийг ашиглана.
+        /*
+        const resp = await fetch('/login', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({sisiId, password, remember: document.getElementById('remember').checked})
+        });
+        const data = await resp.json();
+        if (resp.ok) {
+          msgEl.textContent = 'Амжилттай нэвтэрлээ.';
+          msgEl.className = 'success';
+          // redirect эсвэл token хадгалах
+        } else {
+          msgEl.textContent = data.message || 'Нэвтрэхэд алдаа гарлаа.';
+          msgEl.className = 'error';
+        }
+        */
+
+        // Хэрэв сервер байхгүй бол доорх симуляц ашиглана (зөвхөн demo)
+        await new Promise(r => setTimeout(r, 900)); // simulate latency
+
+        // DEMO: SISI ID S123... ба password "password" бол амжилттай гэж үзнэ
+        if (/^S\d+/i.test(sisiId) && password === 'password') {
+          msgEl.textContent = 'Амжилттай нэвтэрлээ — (симуляци).';
+          msgEl.className = 'success';
+          // Жишээ redirect:
+          // window.location.href = '/dashboard';
+        } else {
+          msgEl.textContent = 'SISI ID эсвэл нууц үг буруу.';
+          msgEl.className = 'error';
+        }
+
+      } catch (err) {
+        console.error(err);
+        msgEl.textContent = 'Сервертэй холбогдоход алдаа гарлаа.';
+        msgEl.className = 'error';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Нэвтрэх';
+      }
+    });
+  </script>
+</body>
+</html>
