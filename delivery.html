@@ -1,69 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NUMDelivery</title>
-    <img src="" alt="logo">
-    <h1>Num Delivery</h1>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NUM Delivery</title>
 </head>
 <body>
-    <h2>Хүргэлтийн хэсэг</h2>
-    <div>
-        <img src="" alt="Size">
-        <h3>Үнэ :</h3>
-        <h3>Авсан бараа :</h3>
-    </div>
-    <article>
-        <h3>Хаанаас - Хаашаа</h3>
-        <h3>Хэнээр</h3>
-        <h3>Юу :</h3>
-    </article>
 
-    <main>
-        <section>
-            <span>
-                <input type="checkbox">
-                <h3>Хүлээн авсан</h3>
-                <p>Цаг :</p>
-            </span>
-        </section>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <img src="logo.png" alt="NUMD" class="logo">
+    </header>
 
-        <section>
-            <span>
-                <input type="checkbox">
-                <h3>Хүргэлтэнд гарсан</h3>
-                <p>Цаг :</p>
-            </span>
-        </section>
+    <!-- Delivery Info -->
+    <section class="delivery-info">
+      <img src="delivery-man.png" alt="Delivery Man" class="delivery-img">
+      <div class="route">
+        <span>GS25</span>
+        <img src="arrow.png" alt="arrow" class="arrow">
+        <span>МУИС 7-р байр</span>
+      </div>
+      <div class="datetime">
+        <span>📅 2025.10.08</span>
+        <span>⏰ 09:36</span>
+      </div>
+    </section>
 
-        <section>
-            <span>
-                <input type="checkbox">
-                <h3>Хүргэгдсэн</h3>
-                <p>Цаг :</p>
-            </span>
-        </section>
-            <div>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-            </div>
-            <p>Таны үнэлгээ: <span>0</span></p>
-            <input type="text">
-            <button>Submit</button>
-    </main>
-    
-    <footer>
-        <nav>
-            <a href="">Нүүр</a>
-            <a href="">Хүргэлт</a>
-            <a href="">Нийт зарууд</a>
-            <a href="">Миний зар</a>
-            <a href="">Хувийн мэдээлэл</a>
-        </nav>
-    </footer>
+    <!-- Progress -->
+    <section class="progress">
+      <div class="step active">
+        <div class="circle red"></div>
+        <div class="content">
+          <h3>Захиалга бэлтгэх</h3>
+          <p>Захиалгыг бэлтгэж дуусаад Next дээр дарна уу.</p>
+          <button class="next-btn">Next</button>
+        </div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="step">
+        <div class="circle"></div>
+        <div class="content">
+          <h3 class="disabled">Хүргэлтэнд гарах</h3>
+        </div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="step">
+        <div class="circle"></div>
+        <div class="content">
+          <h3 class="disabled">Амжилттай хүргэгдсэн</h3>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <div class="nav-item"><img src="home.png"><p>Нүүр</p></div>
+    <div class="nav-item"><img src="cart.png"><p>Сагс</p></div>
+    <div class="nav-item active"><img src="delivery.png"><p>Хүргэлт</p></div>
+    <div class="nav-item"><img src="profile.png"><p>Профайл</p></div>
+  </nav>
+
 </body>
 </html>
